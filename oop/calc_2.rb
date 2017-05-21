@@ -3,8 +3,7 @@
 # a different technique using Composition. Hint: Google 'Ruby Mixin Module'. (Using
 # mixin modules is how you achieve Composition with Ruby.)
 
-class SimpleCalculator
-
+module SimpleCalculator
   def add(first_number, second_number)
     first_number + second_number
   end
@@ -20,26 +19,10 @@ class SimpleCalculator
   def divide(first_number, second_number)
     first_number / second_number
   end
-
-end
+end  
 
 class FancyCalculator
-
-  def add(first_number, second_number)
-    first_number + second_number
-  end
-
-  def subtract(first_number, second_number)
-    first_number - second_number
-  end
-
-  def multiply(first_number, second_number)
-    first_number * second_number
-  end
-
-  def divide(first_number, second_number)
-    first_number / second_number
-  end
+  include SimpleCalculator
 
   def square_root(number)
     Math.sqrt(number)
@@ -48,4 +31,10 @@ class FancyCalculator
 end
 
 # Copy your driver code from the previous exercise below:
+fancy = FancyCalculator.new
 
+p fancy.add(4, 2)
+p fancy.subtract(4, 2)
+p fancy.multiply(4, 2)
+p fancy.divide(4, 2)
+p fancy.square_root(9)
